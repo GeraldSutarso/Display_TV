@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScheduleController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::fallback(function () {
+    return redirect('/');
+    });
+
+Route::get('display', [ScheduleController::class, 'display'])->name('display');
+Route::get('/', [ScheduleController::class, 'display'])->name('display');
